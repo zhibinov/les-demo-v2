@@ -1,0 +1,2218 @@
+/* ==========================================================================
+   REDESIGN 2026 — lesoraschistka.ru
+   Новый namespace-файл. Подключается ПОСЛЕДНИМ (после assets/css/style.css,
+   modal.css и корневого style.css), поэтому переопределяет старые правила
+   без правки старых файлов. Правила сгруппированы по блокам страницы.
+   Палитра (ТЗ, раздел 4): #FFFFFF / #2E3E24 / #172B2B / #F0F8ED
+   ========================================================================== */
+
+:root {
+    --rd-white: #FFFFFF;
+    --rd-green: #2E3E24;
+    --rd-green-hover: #27351E;
+    --rd-green-soft: #F0F8ED;
+    --rd-text: #172B2B;
+    --rd-dark: #172B2B;
+    --rd-shadow: 0 8px 28px rgba(23, 43, 43, 0.10);
+    --rd-shadow-soft: 0 4px 16px rgba(23, 43, 43, 0.07);
+    --rd-radius: 20px;
+    --rd-radius-lg: 30px;
+    --rd-container: 1440px;
+}
+
+/* --------------------------------------------------------------------------
+   База: цвета текста/ссылок, выделение, скроллбар, контейнер
+   -------------------------------------------------------------------------- */
+
+* {
+    color: #172B2B;
+}
+
+a {
+    color: #172B2B;
+}
+
+a:hover {
+    opacity: 1;
+    color: #2E3E24;
+}
+
+*::selection {
+    color: #FFFFFF;
+    background: #2E3E24;
+}
+
+*::-webkit-scrollbar-track {
+    background: #F0F8ED;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #2E3E24;
+}
+
+.container {
+    box-sizing: border-box;
+    max-width: var(--rd-container);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (max-width: 575px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Кнопки — общий вид (зелёные, скруглённые), старые «картинки» в ::after
+   отключаются. Функциональность не трогаем.
+   -------------------------------------------------------------------------- */
+
+.b-main__cta,
+.b-main__bottom button,
+.b-price__link a,
+.b-about .container a,
+.b-works__description-box a,
+.b-works__button,
+.b-services .container a,
+.b-footer__contacts-right button,
+.sd-price__button,
+#modalDialog .inline-inner form button {
+    background: #2E3E24;
+    border: none;
+    border-radius: 14px;
+    height: 52px;
+    box-shadow: var(--rd-shadow-soft);
+    transition: 0.3s;
+}
+
+.b-main__cta::after,
+.b-main__bottom button::after,
+.b-price__link a::after,
+.b-about .container a::after,
+.b-works__description-box a::after,
+.b-works__button::after,
+.b-services .container a::after,
+.b-footer__contacts-right button::after,
+.sd-price__button::after,
+#modalDialog .inline-inner form button::after {
+    display: none;
+}
+
+.b-main__cta:hover,
+.b-main__bottom button:hover,
+.b-price__link a:hover,
+.b-about .container a:hover,
+.b-works__description-box a:hover,
+.b-works__button:hover,
+.b-services .container a:hover,
+.b-footer__contacts-right button:hover,
+.sd-price__button:hover,
+#modalDialog .inline-inner form button:hover {
+    background: #27351E;
+    opacity: 1;
+}
+
+.b-main__bottom button p,
+.b-footer__contacts-right button p,
+#modalDialog .inline-inner form button p,
+.b-price__link a span,
+.b-about .container a span,
+.b-works__description-box a span,
+.b-works__button span,
+.b-services .container a span,
+.sd-price__button span {
+    color: #FFFFFF !important;
+}
+
+/* --------------------------------------------------------------------------
+   Фон секций: белый основной фон вместо #F5F5F5, тёмные — #172B2B
+   -------------------------------------------------------------------------- */
+
+.b-clients,
+.b-price,
+.b-works,
+.b-services,
+.b-video,
+.b-letters {
+    background: #FFFFFF;
+}
+
+.b-about,
+.b-footer__contacts-block,
+.b-footer__copy {
+    background: #172B2B;
+}
+
+.b-footer__politic {
+    background: #F0F8ED;
+}
+
+.preloader {
+    background: #172B2B;
+}
+
+/* --------------------------------------------------------------------------
+   ШАПКА (ТЗ, раздел 5): белая, компактная, скруглённая, лёгкая тень,
+   в верхней части первого экрана. Пункты меню и телефон — как есть.
+   -------------------------------------------------------------------------- */
+
+.b-header {
+    background: #FFFFFF;
+    width: calc(100% - 48px);
+    max-width: var(--rd-container);
+    margin: 16px auto 0;
+    padding: 12px 28px;
+    border-radius: var(--rd-radius);
+    box-shadow: var(--rd-shadow);
+    box-sizing: border-box;
+}
+
+.b-header .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.b-header__ul li:not(:last-child) {
+    margin-right: 36px;
+}
+
+.b-header__ul a {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #172B2B;
+    transition: 0.3s;
+}
+
+.b-header__ul a:hover {
+    color: #2E3E24;
+}
+
+.b-header__contacts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Соцсети в шапке: тёмные на белом фоне (кроме фирменных tg/wa) */
+.b-header .b-header__soc svg {
+    fill: #172B2B;
+    transition: 0.3s;
+}
+
+.b-header .b-header__soc--tg svg {
+    fill: #27A7E7;
+}
+
+.b-header .b-header__soc--wa svg {
+    fill: #2E3E24;
+}
+
+.b-header .b-header__soc:hover svg {
+    fill: #2E3E24;
+}
+
+.b-header .b-header__soc--tg:hover svg {
+    fill: #27A7E7;
+}
+
+.b-header .b-header__soc--wa:hover svg {
+    fill: #2E3E24;
+}
+
+/* Телефон: зелёная круглая иконка + номер */
+.b-header__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: none;
+    white-space: nowrap;
+    color: #172B2B;
+}
+
+.b-header__phone::before {
+    content: '';
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #2E3E24 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64 0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z'/%3E%3C/svg%3E") center / 15px no-repeat;
+    transition: 0.3s;
+}
+
+.b-header__phone:hover::before {
+    background-color: #27351E;
+}
+
+@media (max-width: 991px) {
+    .b-header {
+        width: calc(100% - 24px);
+        margin-top: 10px;
+        padding: 10px 16px;
+    }
+
+    .b-header__phone {
+        font-size: 15px;
+    }
+
+    .b-header__phone::before {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ПЕРВЫЙ ЭКРАН (ТЗ, раздел 6): крупное фото, читаемый заголовок,
+   бейдж «> 10 лет», зелёная кнопка «Связаться с нами» → к форме.
+   -------------------------------------------------------------------------- */
+
+.b-main {
+    position: relative;
+    height: calc(100vh - 90px);
+    min-height: 660px;
+    border-radius: 0 0 var(--rd-radius-lg) var(--rd-radius-lg);
+    overflow: hidden;
+}
+
+/* Затемнение фото для читаемости текста (слой поверх фонового фото) */
+.b-main::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+            rgba(10, 26, 20, 0.55) 0%,
+            rgba(10, 26, 20, 0.18) 42%,
+            rgba(10, 26, 20, 0.68) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.b-main .container {
+    position: relative;
+    z-index: 1;
+    padding-top: 70px;
+}
+
+.b-main__utp {
+    position: relative;
+    background: none;
+    backdrop-filter: none;
+    border-radius: 0;
+    padding: 0;
+    width: 660px;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+.b-main__utp h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 58px;
+    max-width: 640px;
+    color: #FFFFFF;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+    margin-bottom: 18px;
+}
+
+.b-main__utp p {
+    font-size: 22px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* Бейдж «> 10 лет / Опыт работы» */
+.b-main__utp-500 {
+    position: static;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #2E3E24;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 24px;
+    margin-top: 4px;
+    box-shadow: var(--rd-shadow);
+}
+
+.b-main__utp-500,
+.b-main__utp-500 span {
+    color: #FFFFFF;
+}
+
+.b-main__utp-500 span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Кнопка «Связаться с нами» (добавлена в разметке, ведёт к форме) */
+.b-main__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: 28px;
+    padding: 0 34px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.b-main__cta:hover {
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(46, 62, 36, 0.35);
+}
+
+/* Форма на первом экране (ТЗ, раздел 7) — только внешний вид */
+.b-main__bottom h3 {
+    color: #FFFFFF;
+    font-size: 28px;
+}
+
+.b-main__bottom input {
+    border-bottom-color: rgba(255, 255, 255, 0.55);
+    color: #FFFFFF;
+}
+
+.b-main__bottom input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.b-main__bottom button {
+    width: 100%;
+    max-width: 260px;
+}
+
+.b-main__politic,
+.b-main__politic a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.b-main__politic a:hover {
+    color: #2E3E24;
+}
+
+/* Тёмная «подложка» формы на планшете/мобиле */
+.b-main__bottom-background {
+    background: rgba(23, 43, 43, 0.78);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 24px 0 0 0;
+    z-index: 1;
+}
+
+@media (max-width: 1399px) {
+    .b-main__utp {
+        margin: 0 0 32px;
+        width: 100%;
+    }
+
+    .b-main__utp h1 {
+        font-size: 44px;
+        line-height: 48px;
+    }
+}
+
+@media (max-width: 767px) {
+    .b-main {
+        height: auto;
+        min-height: 0;
+        border-radius: 0 0 var(--rd-radius) var(--rd-radius);
+    }
+
+    .b-main .container {
+        padding-top: 48px;
+    }
+
+    .b-main__utp h1 {
+        font-size: 32px;
+        line-height: 36px;
+        max-width: 100%;
+    }
+
+    .b-main__utp p {
+        font-size: 17px;
+        line-height: 23px;
+    }
+
+    .b-main__cta {
+        margin-top: 20px;
+        height: 48px;
+        font-size: 16px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «НАШИ КЛИЕНТЫ» (ТЗ, раздел 8): лента логотипов в белых карточках
+   -------------------------------------------------------------------------- */
+
+.b-clients {
+    padding: 100px 0 50px;
+    background: #FFFFFF;
+}
+
+.b-clients .container h2 {
+    font-size: 40px;
+    line-height: 44px;
+    color: #172B2B;
+    margin-bottom: 36px;
+}
+
+.swiper-clients {
+    height: 96px;
+}
+
+.swiper-clients .swiper-slide {
+    height: 96px;
+    background: #FFFFFF;
+    border: 1px solid #E4EDE3;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(23, 43, 43, 0.06);
+    box-sizing: border-box;
+    padding: 14px 22px;
+    transition: 0.3s;
+    background: #F7FAF5;
+}
+
+.swiper-clients .swiper-slide:hover {
+    border-color: #BFDCC6;
+    box-shadow: 0 8px 22px rgba(23, 43, 43, 0.10);
+}
+
+.swiper-clients .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «НАШИ УСЛУГИ» + КАЛЬКУЛЯТОР (ТЗ, разделы 9–10)
+   Сетка белых карточек слева + вертикальная карточка «Калькулятор
+   стоимости» справа. Стрелка у названий убрана (по ТЗ), вместо неё —
+   круглый зелёный элемент «+» (= существующий чекбокс калькулятора,
+   поведение НЕ менялось). Математика калькулятора не тронута.
+   -------------------------------------------------------------------------- */
+
+.b-price {
+    padding: 90px 0 110px;
+    background: #FFFFFF;
+    /* clip вместо hidden: не создаёт скролл-контейнер и не ломает sticky */
+    overflow-x: clip;
+}
+
+.b-price .container h2 p {
+    font-size: 40px;
+    line-height: 44px;
+    color: #172B2B;
+}
+
+.b-price__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    grid-template-areas: "services calc";
+    gap: 32px;
+    align-items: start;
+}
+
+.b-price__services-box {
+    grid-area: services;
+    display: block;
+}
+
+.b-price__calc-card {
+    grid-area: calc;
+    position: sticky;
+    top: 24px;
+    background-color: #F0F8ED;
+    background-image: linear-gradient(rgba(240, 248, 237, 0.9), rgba(240, 248, 237, 0.9)), url('../img/bg/calculator.webp');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #DCEBD6;
+    border-radius: 22px;
+    padding: 28px 28px 32px;
+    box-sizing: border-box;
+    box-shadow: var(--rd-shadow-soft);
+}
+
+.b-price__calc-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    color: #172B2B;
+    margin-bottom: 14px;
+}
+
+.b-price__description {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    color: #46574F;
+    margin-bottom: 22px;
+}
+
+.sd-price__ga-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #172B2B;
+}
+
+.sd-price__ga-box .sd-price__ga,
+.sd-price__ga-box input.sd-price__ga {
+    width: 150px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 2px solid #C9DEC6;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 0 14px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #172B2B;
+    transition: 0.3s;
+}
+
+.sd-price__ga-box .sd-price__ga:focus {
+    border-color: #2E3E24;
+    outline: none;
+}
+
+/* Декоративная левая колонка со «спецсимволами» старого дизайна */
+.b-price__services-left {
+    display: none;
+}
+
+.b-price__services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    width: 100%;
+    list-style-type: none;
+}
+
+.b-price__services li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 24px 28px;
+    background-color: #FFFFFF;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--rd-card-bg, none);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #E4EDE3;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(23, 43, 43, 0.05);
+    transition: 0.3s;
+}
+
+.b-price__services li:hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.84)), var(--rd-card-bg, none);
+    border-color: #BFDCC6;
+    box-shadow: 0 10px 24px rgba(23, 43, 43, 0.10);
+    transform: translateY(-2px);
+}
+
+.b-price__services li:has(.sd-price__checkbox:checked) {
+    border-color: #2E3E24;
+    background-color: #F0F8ED;
+    background-image: linear-gradient(rgba(240, 248, 237, 0.88), rgba(240, 248, 237, 0.88)), var(--rd-card-bg, none);
+}
+
+.b-price__services li::after,
+.b-price__services li:first-child::before {
+    content: none;
+    border: none;
+    width: auto;
+}
+
+.b-price__services h3 {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #172B2B;
+    max-width: 100%;
+}
+
+.b-price__services h3::before {
+    content: none;
+    margin: 0;
+}
+
+.b-price__services p {
+    max-width: 100%;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    color: #46574F;
+    margin-top: 10px;
+}
+
+/* Блок чекбокса — под контентом, прижат вправо */
+.sd-checkbox__box {
+    position: static;
+    top: auto;
+    right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    width: 100%;
+    margin-top: 18px;
+    transform: none;
+}
+
+.sd-checkbox__box p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: #46574F;
+    text-align: right;
+    margin-top: 0;
+}
+
+/* Поле м3 (услуги с индивидуальным расчётом) */
+.sd-price__m3 {
+    width: 130px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 2px solid #C9DEC6;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: #172B2B;
+    transition: 0.3s;
+}
+
+.sd-price__m3:focus {
+    border-color: #2E3E24;
+    outline: none;
+}
+
+/* Круглый зелёный «+» (обычное состояние) / заливка при выборе */
+.sd-custom-checkbox > span::before {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #C9DEC6;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7 1h2v14H7z' fill='%232E3E24'/%3E%3Cpath d='M1 7h14v2H1z' fill='%232E3E24'/%3E%3C/svg%3E");
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+
+.sd-custom-checkbox > input:not(:disabled):not(:checked) + span:hover::before {
+    background-color: #F0F8ED;
+    border-color: #2E3E24;
+    transition: 0.3s;
+}
+
+.sd-custom-checkbox > input:checked + span::before {
+    background-color: #2E3E24;
+    border-color: #2E3E24;
+    background-image: url("data:image/svg+xml,%3Csvg width='19.156250' height='12.793335' viewBox='0 0 19.1562 12.7933' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.29 6.13L6.65 12.5C7.04 12.89 7.67 12.89 8.07 12.5L18.86 1.7C19.25 1.31 19.25 0.68 18.86 0.29C18.47 -0.1 17.83 -0.1 17.44 0.29L7.36 10.37L1.7 4.72C1.31 4.33 0.68 4.33 0.29 4.72C-0.1 5.11 -0.1 5.74 0.29 6.13Z' fill='%23FFFFFF' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-size: 18px 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Нижняя строка: «Связаться» + пояснение + «Рассчитать» + итог */
+.b-price__link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin: 36px 0 0;
+    margin-left: 0;
+}
+
+.b-price__link a {
+    margin-right: 0;
+    flex-shrink: 0;
+}
+
+.b-price__link > p {
+    display: flex;
+    align-items: center;
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #46574F;
+    margin: 0;
+}
+
+.b-price__link > p svg {
+    flex-shrink: 0;
+    margin-right: 14px;
+}
+
+.sd-price__button {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.sd-price__total-box {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0;
+}
+
+.sd-price__total-box span {
+    font-size: 16px;
+    color: #46574F;
+}
+
+.sd-price__total-box p {
+    margin: 0;
+    font-size: 14px;
+    color: #46574F;
+    text-align: right;
+}
+
+.sd-price__total-box p.sd-price__total {
+    font-family: 'Manrope', sans-serif;
+    font-size: 26px;
+    color: #2E3E24;
+}
+
+@media (max-width: 1199px) {
+    .b-price__layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: "calc" "services";
+    }
+
+    .b-price__calc-card {
+        position: static;
+    }
+}
+
+@media (max-width: 767px) {
+    .b-price {
+        padding: 50px 0 60px;
+    }
+
+    .b-price .container h2 p {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .b-price__layout {
+        gap: 24px;
+    }
+
+    .b-price__calc-card {
+        padding: 22px 18px 26px;
+    }
+
+    .b-price__services {
+        grid-template-columns: 1fr;
+    }
+
+    .b-price__services li {
+        padding: 20px 18px;
+    }
+
+    .sd-checkbox__box {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .sd-checkbox__box p {
+        text-align: left;
+    }
+
+    .b-price__link {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .b-price__link a,
+    .sd-price__button {
+        width: 100%;
+        margin: 0;
+    }
+
+    .b-price__link a,
+    .b-price__link > p {
+        order: 0;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «О КОМПАНИИ» (ТЗ, раздел 11): ~40% изображение слева,
+   ~60% текст справа, тёмный фон, кнопка «Связаться».
+   -------------------------------------------------------------------------- */
+
+.b-about {
+    background: #172B2B;
+    padding: 110px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.b-about img {
+    left: 0;
+    top: 0;
+    width: 38%;
+    min-width: 0;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.b-about .container {
+    padding-left: calc(38% + 56px);
+    padding-right: 40px;
+    max-width: var(--rd-container);
+}
+
+.b-about .container h2 {
+    color: #FFFFFF;
+    font-size: 40px;
+    line-height: 44px;
+    margin-bottom: 24px;
+}
+
+.b-about .container p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 19px;
+    line-height: 29px;
+    margin-bottom: 36px;
+}
+
+.b-about .container a {
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+@media (max-width: 1399px) {
+    .b-price__calc-card {
+        padding: 24px 22px 28px;
+    }
+}
+
+@media (max-width: 992px) {
+    .b-about {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 40px 0 0;
+    }
+
+    .b-about img {
+        position: static;
+        order: 0;
+        width: calc(100% - 30px);
+        max-width: none;
+        height: 260px;
+        margin: 0 15px 30px;
+        border-radius: 18px;
+    }
+
+    .b-about .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .b-about .container h2 {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 16px;
+    }
+
+    .b-about .container p {
+        font-size: 17px;
+        line-height: 26px;
+        margin-bottom: 28px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «НАШИ РАБОТЫ» (ТЗ, разделы 12–16): крупные кейсы, большая галерея
+   со стрелками ← → на фото, информационная зона справа, логотип,
+   кнопка «Связаться», счётчик кейсов. Оба уровня слайдеров сохранены.
+   -------------------------------------------------------------------------- */
+
+.b-works {
+    padding: 110px 0 70px;
+    background: #FFFFFF;
+}
+
+.b-works .container h2 {
+    font-size: 40px;
+    line-height: 44px;
+    color: #172B2B;
+    margin-bottom: 40px;
+}
+
+.swiper-works {
+    margin: 0 24px;
+}
+
+/* Карточка-«корпус» кейса */
+.swiper-card {
+    width: 540px;
+    height: auto;
+    margin: 0;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border: 1px solid #E4EDE3;
+    border-radius: 24px;
+    box-shadow: var(--rd-shadow);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.swiper-card .swiper-slide {
+    height: 640px;
+    background: #F0F8ED;
+}
+
+.swiper-card .swiper-slide img,
+.swiper-card .swiper-slide video {
+    object-fit: cover;
+}
+
+.swiper-pagination-card,
+.swiper-pagination-card.swiper-pagination-horizontal {
+    bottom: 22px;
+    z-index: 5;
+}
+
+.swiper-pagination-card .swiper-pagination-bullet-active {
+    background: #2E3E24;
+}
+
+/* Стрелки ← → строго по бокам фотографии (ТЗ, раздел 13) */
+.swiper-button-prev-card,
+.swiper-button-next-card {
+    top: 50%;
+    bottom: auto;
+    margin-top: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 22px rgba(23, 43, 43, 0.22);
+    transition: 0.3s;
+    z-index: 6;
+    transform: translateY(-50%);
+}
+
+.swiper-button-prev-card {
+    left: 24px;
+}
+
+.swiper-button-next-card {
+    right: 24px;
+}
+
+.swiper-button-prev-card:hover,
+.swiper-button-next-card:hover {
+    background: #2E3E24;
+}
+
+.swiper-button-prev-card svg,
+.swiper-button-next-card svg {
+    fill: #172B2B;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-card:hover svg,
+.swiper-button-next-card:hover svg {
+    fill: #FFFFFF;
+}
+
+/* Внешние стрелки переключения кейсов */
+.swiper-button-prev-works,
+.swiper-button-next-works {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E4EDE3;
+    box-shadow: var(--rd-shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    flex-shrink: 0;
+}
+
+.swiper-button-prev-works:hover,
+.swiper-button-next-works:hover {
+    background: #2E3E24;
+    border-color: #2E3E24;
+}
+
+.swiper-button-prev-works svg path,
+.swiper-button-next-works svg path {
+    fill: #172B2B;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-works:hover svg path,
+.swiper-button-next-works:hover svg path {
+    fill: #FFFFFF;
+}
+
+.swiper-counter-works,
+.swiper-counter-works .swiper-pagination-current,
+.swiper-counter-works .swiper-pagination-total {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    color: #46574F;
+}
+
+.swiper-counter-works .swiper-pagination-current {
+    color: #2E3E24;
+}
+
+.swiper-counter-works .swiper-pagination-total {
+    color: #9FB0A8;
+}
+
+/* Информационная зона справа (ТЗ, раздел 14) */
+.b-works__description-box {
+    margin-left: 48px;
+    max-width: 500px;
+    padding: 20px 0;
+}
+
+.b-works__description-box h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 26px;
+    line-height: 32px;
+    color: #172B2B;
+    margin: 0 0 16px;
+}
+
+.b-works__description-box p {
+    font-size: 17px;
+    line-height: 26px;
+    color: #46574F;
+    margin-bottom: 28px;
+}
+
+.b-works__description-box a {
+    margin-right: 0;
+    padding: 0 30px;
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+}
+
+.b-works__logo {
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+.b-works__button {
+    margin-top: 30px;
+    font-family: 'Manrope', sans-serif;
+}
+
+@media (max-width: 1199px) {
+    .swiper-card {
+        width: 460px;
+    }
+
+    .swiper-card .swiper-slide {
+        height: 560px;
+    }
+
+    .b-works__description-box {
+        margin-left: 32px;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .b-works {
+        padding: 60px 0 40px;
+    }
+
+    .b-works .container h2 {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 30px;
+    }
+
+    .swiper-works {
+        margin: 0;
+    }
+
+    .swiper-card {
+        width: 100%;
+    }
+
+    .swiper-card .swiper-slide {
+        height: 450px;
+    }
+
+    .swiper-button-prev-card,
+    .swiper-button-next-card {
+        width: 40px;
+        height: 40px;
+    }
+
+    .swiper-button-prev-card {
+        left: 12px;
+    }
+
+    .swiper-button-next-card {
+        right: 12px;
+    }
+
+    .swiper-button-prev-works,
+    .swiper-button-next-works {
+        width: 44px;
+        height: 44px;
+    }
+
+    .b-works__description-box {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .b-works__description-box h3 {
+        font-size: 22px;
+        line-height: 28px;
+        margin: 16px 0 10px;
+    }
+
+    .b-works__description-box p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «ЧАСТО ЗАКАЗЫВАЕМЫЕ УСЛУГИ» (ТЗ, раздел 17): четыре крупные
+   карточки с фото + декоративный зелёный круглый «+» (решение заказчика,
+   без привязки к калькулятору, поведение карточек не менялось).
+   -------------------------------------------------------------------------- */
+
+.b-services {
+    padding: 110px 0 70px;
+    background: #F0F8ED;
+}
+
+.b-services .container h2 {
+    font-size: 40px;
+    line-height: 44px;
+    color: #172B2B;
+    margin-bottom: 40px;
+}
+
+.b-services__grid {
+    grid-gap: 24px;
+}
+
+.b-services__grid-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: #FFFFFF;
+    border: 1px solid #E4EDE3;
+    border-radius: 20px;
+    padding: 10px 10px 6px;
+    box-sizing: border-box;
+    box-shadow: var(--rd-shadow-soft);
+    transition: 0.3s;
+}
+
+.b-services__grid-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(23, 43, 43, 0.13);
+}
+
+.b-services__grid-card img {
+    width: 100%;
+    height: 277px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.b-services__grid-card p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    color: #172B2B;
+    margin: 16px 12px 14px;
+}
+
+/* Декоративный зелёный «+» */
+.b-services__grid-card::after {
+    content: '';
+    position: absolute;
+    top: 26px;
+    right: 26px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #2E3E24 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7 1h2v14H7z' fill='%23FFFFFF'/%3E%3Cpath d='M1 7h14v2H1z' fill='%23FFFFFF'/%3E%3C/svg%3E") center / 16px no-repeat;
+    box-shadow: 0 8px 18px rgba(46, 62, 36, 0.35);
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.b-services__grid-card:hover::after {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 992px) {
+    .b-services {
+        padding: 60px 0 50px;
+    }
+
+    .b-services .container h2 {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 30px;
+    }
+
+    .b-services__grid-card img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 575px) {
+    .b-services__grid-card p {
+        font-size: 20px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «ВИДЕО» (ТЗ, раздел 18): крупные карточки-превью, круглая кнопка
+   PLAY по центру (новый изолированный элемент, механика видео сохранена).
+   -------------------------------------------------------------------------- */
+
+.b-video {
+    padding: 110px 0 90px;
+    background: #FFFFFF;
+}
+
+.b-video h2 {
+    font: 800 clamp(34px, 3.4vw, 52px) / 1.1 'Manrope', sans-serif;
+    color: #172B2B;
+    margin-bottom: 40px;
+}
+
+/* Скрываем встроенную стрелку Swiper (в кнопках уже есть свой SVG) */
+.swiper-button-prev-video::after,
+.swiper-button-next-video::after {
+    content: none !important;
+}
+
+.swiper-video {
+    height: 660px;
+}
+
+.swiper-video .swiper-slide video {
+    margin-bottom: 0;
+    width: 1024px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    box-shadow: var(--rd-shadow);
+    background: #000000;
+}
+
+.b-video__frame {
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 0;
+}
+
+.b-video__play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px;
+    height: 88px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 3;
+    padding: 0;
+}
+
+.b-video__play::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent #2E3E24;
+    margin-left: 8px;
+    transition: 0.3s;
+}
+
+.b-video__play:hover {
+    background: #2E3E24;
+    transform: translate(-50%, -50%) scale(1.07);
+}
+
+.b-video__play:hover::before {
+    border-left-color: #FFFFFF;
+}
+
+.b-video__play--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.swiper-video .swiper-slide p {
+    font-size: 17px;
+    line-height: 24px;
+    color: #46574F;
+    text-align: center;
+}
+
+.swiper-pagination-video {
+    bottom: 0 !important;
+}
+
+.swiper-pagination-video .swiper-pagination-bullet-active {
+    background: #2E3E24;
+}
+
+.swiper-button-prev-video,
+.swiper-button-next-video {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 22px rgba(23, 43, 43, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 5;
+    top: calc(50% - 30px);
+    margin-top: 0;
+}
+
+.swiper-button-prev-video {
+    left: 24px;
+    right: auto;
+}
+
+.swiper-button-next-video {
+    right: 24px;
+    left: auto;
+}
+
+.swiper-button-prev-video:hover,
+.swiper-button-next-video:hover {
+    background: #2E3E24;
+}
+
+.swiper-button-prev-video svg path,
+.swiper-button-next-video svg path {
+    fill: #172B2B;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-video:hover svg path,
+.swiper-button-next-video:hover svg path {
+    fill: #FFFFFF;
+}
+
+@media (max-width: 992px) {
+    .b-video {
+        padding: 60px 0 50px;
+    }
+
+    .b-video h2 {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 30px;
+    }
+
+    .swiper-video {
+        height: auto;
+        padding-bottom: 46px;
+    }
+
+    .swiper-video .swiper-slide {
+        padding-bottom: 10px;
+    }
+
+    .b-video__play {
+        width: 66px;
+        height: 66px;
+    }
+
+    .b-video__play::before {
+        border-width: 11px 0 11px 18px;
+        margin-left: 6px;
+    }
+
+    .swiper-button-prev-video,
+    .swiper-button-next-video {
+        width: 42px;
+        height: 42px;
+        top: calc(50% - 40px);
+    }
+
+    .swiper-button-prev-video {
+        left: 8px;
+    }
+
+    .swiper-button-next-video {
+        right: 8px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК С ДОКУМЕНТАМИ / ПИСЬМАМИ: светлый зелёный фон, белые карточки
+   -------------------------------------------------------------------------- */
+
+.b-letters {
+    background: #F0F8ED;
+    padding: 0 0 110px;
+}
+
+.b-letters h2 {
+    font-size: 40px;
+    line-height: 44px;
+    color: #172B2B;
+    margin-bottom: 40px;
+}
+
+.swiper-letters .swiper-slide .glightbox {
+    border: 1px solid #E4EDE3;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--rd-shadow-soft);
+    transition: 0.3s;
+}
+
+.swiper-letters .swiper-slide .glightbox:hover {
+    box-shadow: var(--rd-shadow);
+}
+
+.swiper-pagination-letters .swiper-pagination-bullet-active {
+    background: #2E3E24;
+}
+
+.swiper-button-prev-letters,
+.swiper-button-next-letters {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E4EDE3;
+    box-shadow: var(--rd-shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-letters:hover,
+.swiper-button-next-letters:hover {
+    background: #2E3E24;
+    border-color: #2E3E24;
+}
+
+.swiper-button-prev-letters svg path,
+.swiper-button-next-letters svg path {
+    fill: #172B2B;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-letters:hover svg path,
+.swiper-button-next-letters:hover svg path {
+    fill: #FFFFFF;
+}
+
+@media (max-width: 992px) {
+    .b-letters {
+        padding-bottom: 50px;
+    }
+
+    .b-letters h2 {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 30px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   КОНТАКТЫ (ТЗ, раздел 19): крупный тёмный блок, слева контакты,
+   справа белая карточка с существующей формой (функциональность сохранена).
+   -------------------------------------------------------------------------- */
+
+.b-footer__contacts-block {
+    padding: 90px 0;
+    background: #172B2B;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left {
+    padding-top: 0;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 40px;
+    line-height: 44px;
+    color: #FFFFFF;
+    margin-bottom: 36px;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 8px;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left a {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 28px;
+    line-height: 34px;
+    color: #FFFFFF;
+    margin-bottom: 28px;
+    transition: 0.3s;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left a:hover {
+    color: #2E3E24;
+    opacity: 1;
+}
+
+/* Белая карточка формы */
+.b-footer__contacts-block .container .b-footer__contacts-right {
+    width: 560px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 34px 36px 30px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    backdrop-filter: none;
+    border: none;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 26px;
+    line-height: 32px;
+    color: #172B2B;
+    margin-bottom: 20px;
+}
+
+/* Соцсети внутри карточки */
+.b-footer__contacts-right .b-header__soc {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #F0F8ED;
+    transition: 0.3s;
+}
+
+.b-footer__contacts-right .b-header__soc:hover {
+    background: #DCEBD6;
+    opacity: 1;
+}
+
+.b-footer__contacts-right .b-header__soc svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Поля формы */
+.b-footer__contacts-block .container .b-footer__contacts-right input:not([type="submit"]):not([type="file"]):not([type="hidden"]),
+.b-footer__contacts-block .container .b-footer__contacts-right textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: #F6FAF5;
+    border: 1px solid #D7E5D2;
+    border-bottom: 1px solid #D7E5D2;
+    border-radius: 12px;
+    color: #172B2B;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    padding: 13px 16px;
+    margin-bottom: 14px;
+    transition: 0.3s;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right input::placeholder,
+.b-footer__contacts-block .container .b-footer__contacts-right textarea::placeholder {
+    color: #8A9A93;
+    opacity: 1;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right input:focus,
+.b-footer__contacts-block .container .b-footer__contacts-right textarea:focus {
+    outline: none;
+    border-color: #2E3E24;
+    background: #FFFFFF;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+    background: #F6FAF5;
+    border: 1px dashed #C9DEC6;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #46574F;
+}
+
+/* Кнопка отправки (существующая <button><p>Отправить</p></button>) */
+.b-footer__contacts-block .container .b-footer__contacts-right button {
+    background: #2E3E24;
+    border: none;
+    border-radius: 14px;
+    width: 100%;
+    height: 54px;
+    margin-bottom: 14px;
+    transition: 0.3s;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right button::after {
+    display: none;
+    content: none;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right button:hover {
+    background: #27351E;
+    opacity: 1;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-right button p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+.b-footer__contacts-right .b-footer__contacts-politic {
+    color: #7A8B84;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+}
+
+.b-footer__contacts-right .b-footer__contacts-politic a {
+    color: #172B2B;
+    text-decoration: underline;
+}
+
+.b-footer__contacts-right .b-footer__contacts-politic a:hover {
+    color: #2E3E24;
+}
+
+@media (max-width: 1199px) {
+    .b-footer__contacts-block .container .b-footer__contacts-right {
+        width: 480px;
+        padding: 28px 26px 26px;
+    }
+}
+
+@media (max-width: 992px) {
+    .b-footer__contacts-block {
+        padding: 60px 0 50px;
+    }
+
+    .b-footer__contacts-block .container .b-footer__contacts-left h2 {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 20px;
+    }
+
+    .b-footer__contacts-block .container .b-footer__contacts-left a {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .b-footer__contacts-block .container .b-footer__contacts-right {
+        width: 100%;
+        padding: 26px 20px 24px;
+        margin-top: 30px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ФУТЕР (ТЗ, раздел 20): тёмно-зелёный, логотип слева, ссылки по центру,
+   реквизиты справа.
+   -------------------------------------------------------------------------- */
+
+.b-footer__bottom {
+    background-color: #172B2B;
+    background-image: linear-gradient(rgba(23, 43, 43, 0.92), rgba(23, 43, 43, 0.92)), url('../img/bg/footer.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 34px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.b-footer__bottom .container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
+}
+
+.b-footer__logo .custom-logo-link {
+    display: inline-block;
+    line-height: 0;
+}
+
+.b-footer__logo .custom-logo {
+    display: block;
+    width: auto;
+    height: 46px;
+    max-width: 220px;
+    object-fit: contain;
+}
+
+.b-footer__politic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 26px;
+    padding: 0;
+    background: none;
+}
+
+.b-footer__politic a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.b-footer__politic a:hover {
+    color: #2E3E24;
+    opacity: 1;
+}
+
+.b-footer__bottom .b-footer__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0;
+    background: none;
+    text-align: right;
+}
+
+.b-footer__copy .footer-copy__year,
+.b-footer__bottom .b-footer__copy a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.b-footer__bottom .b-footer__copy a:hover {
+    color: #B9D8B4;
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .b-footer__bottom {
+        padding: 28px 0;
+    }
+
+    .b-footer__bottom .container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 18px;
+    }
+
+    .b-footer__bottom .b-footer__copy {
+        align-items: center;
+        text-align: center;
+    }
+
+    .b-footer__logo .custom-logo {
+        height: 40px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   МОДАЛЬНОЕ ОКНО: белая карточка, зелёные акценты
+   -------------------------------------------------------------------------- */
+
+#modalDialog {
+    border: 1px solid #E4EDE3;
+    border-radius: 24px;
+    box-shadow: 0 0 14px 9999px rgba(23, 43, 43, 0.6);
+}
+
+#modalDialog[open] {
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35), 0 0 14px 9999px rgba(23, 43, 43, 0.6);
+}
+
+.sd-dialog__wrapper {
+    background: #FFFFFF;
+}
+
+.sd-dialog__grid {
+    border-radius: 24px;
+}
+
+.inline-inner {
+    padding: 44px 44px 40px;
+}
+
+.inline-inner h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    color: #172B2B;
+    margin-bottom: 18px;
+}
+
+.inline-inner form .wpcf7-form-control-wrap .wpcf7-form-control {
+    border-bottom: 1px solid #C9DEC6;
+    background: #F6FAF5;
+    border-radius: 10px 10px 0 0;
+    padding: 12px 14px;
+    color: #172B2B;
+}
+
+.inline-inner form .wpcf7-form-control-wrap .wpcf7-form-control:focus {
+    outline: none;
+    border-bottom-color: #2E3E24;
+}
+
+.inline-inner form .sd-button {
+    background: #2E3E24;
+    border: none;
+    border-radius: 14px;
+    color: #FFFFFF;
+}
+
+.inline-inner form .sd-button:hover {
+    background: #27351E;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.sd-dialog__close {
+    width: 42px;
+    height: 42px;
+    top: 16px;
+    right: 16px;
+    padding: 11px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #F0F8ED;
+    transition: 0.3s;
+}
+
+.sd-dialog__close:hover {
+    background: #DCEBD6;
+}
+
+/* «Рассчитать» / кнопки-открыватели модалки: единый зелёный вид */
+.sd-modal-link {
+    border: none;
+    color: #FFFFFF;
+}
+
+.sd-price__button.sd-modal-link {
+    margin: 0;
+}
+
+.sd-modal-link:hover {
+    background: #27351E;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+@media (max-width: 575px) {
+    .inline-inner {
+        padding: 52px 20px 28px;
+    }
+
+    .inline-inner h2 {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ОБЩИЙ АДАПТИВ ЗАГОЛОВКОВ (ТЗ, раздел 21)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    .b-clients .container h2,
+    .b-works .container h2,
+    .b-services .container h2,
+    .b-letters h2,
+    .b-price .container h2 p {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .b-clients,
+    .b-price,
+    .b-works,
+    .b-services,
+    .b-video,
+    .b-gallery,
+    .b-letters {
+        padding-top: 50px;
+        padding-bottom: 40px;
+    }
+
+    .b-letters {
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 575px) {
+    .b-price__services {
+        grid-template-columns: 1fr;
+    }
+
+    .b-services__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-card .swiper-slide {
+        height: 340px;
+    }
+
+    .b-video__play {
+        width: 56px;
+        height: 56px;
+    }
+
+    .b-video__play::before {
+        border-width: 9px 0 9px 15px;
+        margin-left: 5px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   БЛОК «ГАЛЕРЕЯ» — слайдер с фото работ. Клик по фото открывает его в
+   лайтбоксе (GLightbox, уже подключён в теме). Механика Swiper/GLightbox
+   не меняется, блок изолирован отдельным namespace .b-gallery.
+   -------------------------------------------------------------------------- */
+
+.b-gallery {
+    padding: 110px 0 90px;
+    background: #F0F8ED;
+}
+
+.b-gallery h2 {
+    font: 800 clamp(34px, 3.4vw, 52px) / 1.1 'Manrope', sans-serif;
+    color: #172B2B;
+    margin-bottom: 40px;
+}
+
+.swiper-gallery {
+    padding-bottom: 56px;
+}
+
+.swiper-gallery .swiper-slide {
+    height: auto;
+}
+
+.b-gallery__item {
+    position: relative;
+    display: block;
+    line-height: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--rd-shadow);
+    cursor: zoom-in;
+}
+
+.b-gallery__item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.b-gallery__item:hover img {
+    transform: scale(1.05);
+}
+
+/* Иконка «увеличить» поверх фото */
+.b-gallery__item::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E3E24' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M11 8v6M8 11h6'/%3E%3Cpath d='M16.5 16.5 21 21'/%3E%3C/svg%3E") center / 20px no-repeat;
+    box-shadow: 0 8px 18px rgba(23, 43, 43, 0.22);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.b-gallery__item:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.swiper-pagination-gallery {
+    bottom: 0 !important;
+}
+
+.swiper-pagination-gallery .swiper-pagination-bullet {
+    background: #2E3E24;
+    opacity: 0.3;
+}
+
+.swiper-pagination-gallery .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.swiper-button-prev-gallery,
+.swiper-button-next-gallery {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 22px rgba(23, 43, 43, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 5;
+    top: 50%;
+    margin-top: 0;
+}
+
+.swiper-button-prev-gallery {
+    left: 24px;
+    right: auto;
+}
+
+.swiper-button-next-gallery {
+    right: 24px;
+    left: auto;
+}
+
+.swiper-button-prev-gallery:hover,
+.swiper-button-next-gallery:hover {
+    background: #2E3E24;
+}
+
+.swiper-button-prev-gallery svg path,
+.swiper-button-next-gallery svg path {
+    fill: #172B2B;
+    transition: 0.3s;
+}
+
+.swiper-button-prev-gallery:hover svg path,
+.swiper-button-next-gallery:hover svg path {
+    fill: #FFFFFF;
+}
+
+.swiper-button-prev-gallery::after,
+.swiper-button-next-gallery::after {
+    content: none !important;
+}
+
+.swiper-button-prev-gallery.swiper-button-disabled,
+.swiper-button-next-gallery.swiper-button-disabled {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 992px) {
+    .b-gallery {
+        padding: 60px 0 50px;
+    }
+
+    .swiper-button-prev-gallery,
+    .swiper-button-next-gallery {
+        width: 42px;
+        height: 42px;
+    }
+
+    .swiper-button-prev-gallery {
+        left: 8px;
+    }
+
+    .swiper-button-next-gallery {
+        right: 8px;
+    }
+}
+
+@media (max-width: 575px) {
+    .b-gallery__item::after {
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+    }
+}
+

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="08-planirovka-uchastka">
+  <circle cx="32" cy="32" r="31" fill="#EDF6EA"/>
+  <g fill="none" stroke="#164A27" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 37h32l4 8H10z"/><rect x="8" y="44" width="38" height="10" rx="5"/><circle cx="17" cy="49" r="2.5"/><circle cx="37" cy="49" r="2.5"/><path d="M17 37V23h17l6 14M22 23v-9h10l3 9M23 27h9"/><path d="M46 38h6l7 12H46M46 50h14"/><path d="M6 57h53m-8-21 4-2 4 2"/></g>
+</svg>

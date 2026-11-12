@@ -1,0 +1,590 @@
+/*!
+Theme Name: ForestClearing-Theme
+Author: PhilippovPavel
+Author URI: https://philippovpavel.ru
+Version: 1.0
+Tested up to: 5.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: frst
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+forestclearing is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
+
+.wp-block-post-content {
+	overflow-x: hidden;
+}
+
+/* футер форма */
+.b-footer__contacts-right .wpcf7 .wpcf7-response-output {
+	background: #fff;
+	font-size: 11px;
+}
+
+.b-footer__contacts-right .wpcf7 .wpcf7-not-valid-tip {
+	position: absolute;
+	bottom: -25px;
+	right: 0;
+	font-size: 12px;
+	display: flex;
+	color: #ab0000;
+	background: #9300003b;
+	padding: 0 10px;
+}
+
+.b-footer__contacts-right .wpcf7 {
+	width: 100%;
+}
+
+/* посадочная форма */
+.b-main__bottom .wpcf7 .wpcf7-response-output {
+	background: #fff;
+	font-size: 11px;
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	margin: 0 !important;
+}
+
+.b-main__bottom .wpcf7 .wpcf7-not-valid-tip {
+	position: absolute;
+	font-size: 11px;
+	bottom: -15px;
+	right: 0;
+	display: flex;
+	color: #ef0000;
+}
+
+/* посадочная форма 2 */
+.b-main__bottom form br {
+	display: none;
+}
+
+.b-main__bottom-background .wpcf7 .wpcf7-response-output {
+	background: #fff;
+	font-size: 11px;
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	margin: 0 !important;
+}
+
+.b-main__bottom-background .wpcf7 .wpcf7-not-valid-tip {
+	position: absolute;
+	font-size: 11px;
+	bottom: -15px;
+	right: 0;
+	display: flex;
+	color: #ef0000;
+}
+
+/* поиск - не результатов */
+.error404 .search-form,
+.search-no-results .search-form {
+	width: 100%;
+}
+
+.error404 .search-form [type="search"],
+.search-no-results .search-form [type="search"] {
+	width: 100%;
+	padding: 10px;
+	font-size: 20px;
+}
+
+.error404 .search-form [type="submit"],
+.search-no-results .search-form [type="submit"] {
+	font-size: 20px;
+	padding: 10px 30px;
+	width: max-content;
+	margin-top: 15px;
+}
+
+/* поиск - результаты */
+.blog .b-services__grid-card p,
+.search-results .b-services__grid-card p {
+	text-align: center;
+}
+
+/* админбар */
+#wpadminbar {
+	top: -52px;
+	transition: top .3s ease;
+	height: 55px;
+	padding-top: 10px;
+	box-sizing: border-box;
+}
+
+#wpadminbar:hover {
+	top: 0;
+}
+
+#wp-admin-bar-new-post {
+	display: none;
+}
+
+#wpadminbar .show-template-name,
+#wpadminbar #included-files-list li,
+#wpadminbar .display-name {
+	color: #f9f9f9;
+}
+
+#wpadminbar .menupop.hover .display-name,
+#wpadminbar .ab-item:hover .display-name {
+	color: #72aee6;
+}
+
+/* soc */
+.b-header__contacts,
+.b-main__contacts,
+.b-footer__contacts {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+	gap: 10px;
+}
+
+.b-main__contacts {
+	margin-bottom: 12px;
+}
+
+.b-footer__contacts {
+	margin-bottom: 20x;
+}
+
+.b-header__soc {
+	display: inline-block;
+	width: 23px;
+}
+
+.b-header__soc svg {
+	fill: #fff;
+	width: 100%;
+	height: 100%;
+}
+
+.b-header__soc--tg svg {
+	fill: #27a7e7;
+}
+
+.b-header__soc--wa svg {
+	fill: #2E3E24;
+}
+
+.b-main__bottom h3,
+.b-footer__contacts h3 {
+	margin-bottom: 0;
+}
+
+.custom-logo {
+	height: 45px;
+	object-fit: contain;
+}
+
+@media (max-width: 575px) {
+	.custom-logo {
+		width: 77px;
+	}
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left p {
+	margin-top: 20px;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left h2 + p {
+	margin-top: 0;
+}
+
+@media (max-width: 992px) {
+	.b-footer__contacts-block .container .b-footer__contacts-left p {
+		margin-top: 0;
+		width: 50%;
+	}
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left p {
+	margin-top: 40px;
+}
+
+.b-footer__contacts-block .container .b-footer__contacts-left p {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 992px) {
+    .b-footer__contacts-block .container .b-footer__contacts-left p {
+        margin-top: 0;
+    }
+}
+
+/* Новые стили прайс блока */
+.sd-price__ga-box {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: clamp(1.563rem, 1.487rem + 0.32vw, 1.875rem);
+	font-family: 'Manrope', sans-serif;
+	gap: clamp(0.938rem, 0.862rem + 0.32vw, 1.25rem);
+	font-size: clamp(1.125rem, 1.034rem + 0.39vw, 1.5rem);
+}
+
+.sd-price__ga-box input {
+	width: clamp(4.125rem, 3.746rem + 1.62vw, 5.688rem);
+	height: clamp(1.438rem, 1.331rem + 0.45vw, 1.875rem);
+	background: none;
+	border: 1px solid rgb(46, 62, 36);
+	box-sizing: border-box;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.sd-price__m3 {
+	width: clamp(4.125rem, 3.746rem + 1.62vw, 5.688rem);
+	height: clamp(1.375rem, 1.254rem + 0.52vw, 1.875rem);
+	background: none;
+	border: 1px solid rgb(46, 62, 36);
+	box-sizing: border-box;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.sd-price__m3::-moz-placeholder {
+	color: rgba(46, 62, 36, 0.3);
+}
+
+.sd-price__m3::placeholder {
+	color: rgba(46, 62, 36, 0.3);
+}
+
+.b-price__services li {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+@media (max-width: 374px) {
+
+	.b-price__services li:nth-child(8) h3,
+	.b-price__services li:nth-child(9) h3 {
+		max-width: 150px;
+	}
+}
+
+.b-price__services h3 {
+	font-family: 'Manrope', sans-serif;
+	font-size: clamp(1.375rem, 1.193rem + 0.78vw, 2.125rem);
+	font-weight: 400;
+	max-width: clamp(15.625rem, 5.765rem + 42.07vw, 56.25rem);
+	display: flex;
+}
+
+.b-price__services h3::before {
+	margin-right: 25px;
+	content: url("data:image/svg+xml,%3Csvg width='37' height='16' viewBox='0 0 37 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36.7071 8.70711C37.0976 8.31658 37.0976 7.68342 36.7071 7.29289L30.3431 0.928932C29.9526 0.538408 29.3195 0.538408 28.9289 0.928932C28.5384 1.31946 28.5384 1.95262 28.9289 2.34315L34.5858 8L28.9289 13.6569C28.5384 14.0474 28.5384 14.6805 28.9289 15.0711C29.3195 15.4616 29.9526 15.4616 30.3431 15.0711L36.7071 8.70711ZM0 9H36V7H0V9Z' fill='%232E3E24' /%3E%3C/svg%3E");
+}
+
+@media (max-width: 767px) {
+	.b-price__services h3::before {
+		content: "";
+		margin: 0;
+	}
+}
+
+.b-price__services p {
+	max-width: 901px;
+	font-size: clamp(0.875rem, 0.814rem + 0.26vw, 1.125rem);
+	line-height: normal;
+	margin-top: clamp(0.75rem, 0.629rem + 0.52vw, 1.25rem);
+}
+
+/* для элемента input c type="checkbox" */
+.sd-custom-checkbox>input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+
+.sd-checkbox__box {
+	position: absolute;
+	right: 0;
+	top: 30px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+@media (max-width: 767px) {
+	.sd-checkbox__box {
+		top: 10px;
+	}
+}
+
+.sd-checkbox__box p {
+	font-size: 14px;
+	width: clamp(8.125rem, 6.729rem + 5.95vw, 13.875rem);
+	text-align: right;
+	margin-top: 0;
+}
+
+.sd-custom-checkbox {
+	display: flex;
+}
+
+/* для элемента label, связанного с .custom-checkbox */
+.sd-custom-checkbox>span {
+	display: inline-flex;
+	align-items: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+/* создание в label псевдоэлемента before со следующими стилями */
+.sd-custom-checkbox>span::before {
+	content: "";
+	display: inline-block;
+	width: clamp(1.375rem, 1.254rem + 0.52vw, 1.875rem);
+	height: clamp(1.375rem, 1.254rem + 0.52vw, 1.875rem);
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: 1px solid rgb(46, 62, 36);
+	background-repeat: no-repeat;
+	background-position: center center;
+	box-sizing: border-box;
+}
+
+/* стили при наведении курсора на checkbox */
+.sd-custom-checkbox>input:not(:disabled):not(:checked)+span:hover::before {
+	background: rgb(46, 62, 36);
+	transition: 0.3s;
+}
+
+/* стили для чекбокса, находящегося в состоянии checked */
+.sd-custom-checkbox>input:checked+span::before {
+	background-color: rgb(46, 62, 36);
+	background-image: url("data:image/svg+xml,%3Csvg width='19.156250' height='12.793335' viewBox='0 0 19.1562 12.7933' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdesc%3E Created with Pixso. %3C/desc%3E%3Cdefs/%3E%3Cpath id='Arrow 14 (Stroke)' d='M0.29 6.13L6.65 12.5C7.04 12.89 7.67 12.89 8.07 12.5L18.86 1.7C19.25 1.31 19.25 0.68 18.86 0.29C18.47 -0.1 17.83 -0.1 17.44 0.29L7.36 10.37L1.7 4.72C1.31 4.33 0.68 4.33 0.29 4.72C-0.1 5.11 -0.1 5.74 0.29 6.13Z' fill='%23FFFFFF' fill-opacity='1.000000' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
+}
+
+@media (max-width: 767px) {
+	.sd-custom-checkbox>input:checked+span::before {
+		background-size: 50% 50%;
+	}
+}
+
+.b-price__services {
+	width: 100%;
+}
+
+.sd-price__total {
+	min-width: 150px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.sd-price__total-box {
+	display: flex;
+	align-items: flex-end;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.sd-price__total-box span {
+	font-size: clamp(0.875rem, 0.814rem + 0.26vw, 1.125rem);
+}
+
+.sd-price__total-box p {
+	font-family: 'Manrope', sans-serif;
+	text-align: right;
+	font-size: clamp(1.375rem, 1.193rem + 0.78vw, 2.125rem);
+}
+
+.sd-price__button span {
+	font-size: 18px;
+	line-height: 23px;
+}
+
+@media (max-width: 767px) {
+	.sd-price__button span {
+		font-size: 16px;
+		line-height: 20px;
+	}
+}
+
+.sd-price__button {
+	height: 48px;
+	background: #2E3E24;
+	width: 220px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding-top: 5px;
+	position: relative;
+	margin-right: 23px;
+	margin-left: 23px;
+	flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+	.sd-price__button {
+		margin: 0;
+		width: 100%;
+	}
+}
+
+.sd-price__button span {
+	font-family: 'Manrope', sans-serif;
+	color: #FFFEFA;
+	z-index: 1;
+}
+
+.sd-price__button::after {
+	content: "";
+	background: url(assets/img/price-button.jpg) no-repeat center;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: 0.3s;
+}
+
+.sd-price__button:hover {
+	opacity: 1;
+}
+
+.sd-price__button:hover::after {
+	opacity: 1;
+	transition: 0.3s;
+}
+
+@media (max-width: 1399px) {
+	.b-price__link {
+		display: grid;
+		grid-template-columns: 1fr 320px;
+		grid-gap: 10px;
+		justify-items: flex-end;
+	}
+
+	.b-price__link a,
+	.b-price__link button {
+		margin: 0;
+	}
+
+	.b-price__link .sd-price__total-box {
+		justify-self: start;
+	}
+}
+
+@media (max-width: 767px) {
+	.b-price__link {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.b-price__link a {
+		order: 2;
+	}
+
+	.b-price__link p {
+		order: 3;
+		margin: 0;
+	}
+}
+
+.sd-price__calc_selecting {
+	display: none;
+}
+
+.b-price .container h2 span {
+	display: none;
+}
+
+.b-price .container h2 p:last-child {
+	display: none;
+}
+
+.b-main__utp h1 {
+	    max-width: 445px;
+}
+
+.b-price__description {
+    max-width: 100%;
+}
+
+#modalDialog .inline-inner form button {
+    margin-top: clamp(0.313rem, -1.25rem + 2.08vw, 1.25rem);
+    width: 100%;
+    box-sizing: border-box;
+    padding: clamp(0.688rem, 0.479rem + 0.28vw, 0.813rem);
+    background: #2E3E24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #2E3E24;
+}
+
+#modalDialog .inline-inner form button p {
+	font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+	color: #FFFEFA;
+	transition: 0.3s;
+}
+
+#modalDialog .inline-inner form button:hover {
+    background: #FFFEFA;
+    transition: 0.3s;
+}
+
+#modalDialog .inline-inner form button:hover p {
+	color: #2E3E24;
+    transition: 0.3s;
+}
+
+#wpcf7-f19-o1, .b-main__politic, .b-main__bottom-background,  #wpcf7-f19-o3, .b-footer__contacts-politic, .sd-price__ga-box, .sd-checkbox__box, .sd-price__button.sd-modal-link {
+/* 	display: none; */
+}
+
+@media (max-width: 767px) {
+    .b-main {
+        height: unset;
+    }
+}
+@media (max-width: 1399px) {
+	.b-main__bottom {
+		display: flex !important;
+	}
+}
+
+@media (max-width: 991px) {
+    .b-header__ul {
+        display: none;
+    }
+}
+
+.b-footer__politic {
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.b-footer__politic {
+	text-align: center;
+}
+
+@media (max-width: 575px) {
+    .custom-logo {
+        display: none;
+    }
+}
